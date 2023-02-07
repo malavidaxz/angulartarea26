@@ -1,0 +1,14 @@
+.correct {
+    outline: 0;
+    border: 1px solid greenyellow;
+}
+.error {
+    outline: 0;
+    border: 1px solid red;
+}
+input.correct:focus {
+    box-shadow: 0 0 0 0.15rem rgba(97, 143, 28, 0.25);
+}
+input.error:focus {
+    box-shadow: 0 0 0 0.15rem rgba(220, 53, 69, 0.25);
+}

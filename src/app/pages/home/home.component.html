@@ -1,0 +1,64 @@
+<app-header></app-header>
+<div class="mt-6 mx-auto container sm:w-screen">
+    <div>
+        <h1 class="text-center font-bold text-4xl mt-6">Lista de Usuarios</h1>
+
+        <div class="flex flex-col md:px-4 sm:px-4 px-5">
+            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div class="py-4 inline-block min-w-full sm:px-6 lg:px-8">
+                    <div class="overflow-x-auto w-full">
+                        <table class="table-auto border-b mx-auto max-w-4xl w-full whitespace-nowrap rounded-lg bg-white divide-y divide-gray-300 overflow-hidden">
+                            <thead class="bg-gray-900">
+                                <tr class="text-white text-center">
+                                    <th scope="col" class="font-semibold text-sm uppercase px-6 py-4 text-center">
+                                        Name
+                                    </th>
+                                    <th scope="col" class="font-semibold text-sm uppercase px-6 py-4 text-center">
+                                        Username
+                                    </th>
+                                    <th scope="col" class="font-semibold text-sm uppercase px-6 py-4 text-center">
+                                        Email
+                                    </th>
+                                    <th scope="col" class="font-semibold text-sm uppercase px-6 py-4 text-center">
+                                        Status 
+                                    </th>
+                                    <th scope="col" class="font-semibold text-sm uppercase px-6 py-4 text-center">
+                                        Details
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <tr class="bg-white border transition duration-300 ease-in-out hover:bg-gray-100" *ngFor="let usuario of users  | paginate: { itemsPerPage: 5, currentPage: page }">
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="inline-flex w-10 h-10"> <img class='w-10 h-10 object-cover rounded-full' alt='User avatar' src='https://i.pravatar.cc/150?img={{usuario.id}}' /> </div>
+                                            <div>
+                                                <p> {{usuario.name}}</p>
+                                                <p class="text-gray-500 text-sm font-semibold tracking-wide"> phone : {{usuario.phone}} </p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-center">
+                                        {{usuario.username}}
+                                    </td>
+                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-center">
+                                        {{usuario.email}}
+                                    </td>
+                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-center">
+                                        <span class="text-white text-sm w-1/3 pb-1 bg-green-600 font-semibold px-2 rounded-full"> Active </span>
+                                    </td>
+                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-center">
+                                        <a (click)="Detalle(usuario.id)" type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-sm leading-tight rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out cursor-pointer"><i class="bi bi-person-circle"></i> Ver Más</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <pagination-controls class="text-center" (pageChange)="page = $event"></pagination-controls>
+    </div>
+        
+</div>
